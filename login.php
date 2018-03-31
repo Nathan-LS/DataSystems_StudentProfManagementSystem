@@ -1,5 +1,5 @@
 <?php
-require_once("class/permissions.php");
+require_once(dirname(__FILE__)."/class/permissions.php");
 $permissions = new permissions(0);
 $permissions->can_access();
 ?>

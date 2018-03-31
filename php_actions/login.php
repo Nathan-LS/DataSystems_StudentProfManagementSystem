@@ -1,6 +1,6 @@
 <?php
 require("../config.php");
-require ("../class/response.php");
+require (dirname(__FILE__)."/../class/response.php");
 
 session_start();
 $response = new response();

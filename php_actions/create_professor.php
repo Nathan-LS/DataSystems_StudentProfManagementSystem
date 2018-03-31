@@ -1,7 +1,7 @@
 <?php
-require_once("../config.php");
-require_once("../class/response.php");
-require_once("../class/permissions.php");
+require_once(dirname(__FILE__)."/../config.php");
+require_once(dirname(__FILE__)."/../class/response.php");
+require_once(dirname(__FILE__)."/../class/permissions.php");
 
 $response = new response();
 $permissions = new permissions(2);
