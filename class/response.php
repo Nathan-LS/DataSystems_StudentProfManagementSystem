@@ -11,7 +11,8 @@ class response
         $this->message_ = "Something went wrong";
         $this->link_= "#";
     }
-    public function setError(bool $error)
+
+    public function setError($error)
     {
         if (!$error){
             $this->error_ = 0;
@@ -20,16 +21,18 @@ class response
             $this->error_ = 1;
         }
     }
-    public function setMessage(string $message)
+
+    public function setMessage($message)
     {
         $this->message_ = $message;
     }
 
-    public function setLink(string $link)
+    public function setLink($link)
     {
         $this->link_ = $link;
     }
-    public function getMessage(): string
+
+    public function getMessage()
     {
         return $this->message_;
     }

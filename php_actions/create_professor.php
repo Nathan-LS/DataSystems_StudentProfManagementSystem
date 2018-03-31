@@ -7,7 +7,8 @@ $response = new response();
 $permissions = new permissions(2);
 $permissions->can_access();
 
-function parse_input($data, bool $required){
+function parse_input($data, $required)
+{
     $data = trim($data);
     $data = htmlspecialchars($data);
     if ($required && empty($data)){

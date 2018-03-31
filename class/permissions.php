@@ -6,7 +6,9 @@ class permissions
 {
     private $level_;
     private $resp;
-    public function __construct(int $level){
+
+    public function __construct($level)
+    {
         $this->level_ = $level;
         $this->resp = new response();
         session_start();
