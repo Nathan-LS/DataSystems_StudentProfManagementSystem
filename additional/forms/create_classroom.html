@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../bootstrap_studio/export/assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../bootstrap_studio/export/assets/css/sidebar1.css">
+</head>
+
+<body>
+<form action="php_actions/create_classroom.php" method="post" id="s_form"
+      style="margin:0px;padding-top:28px;padding-bottom:28px;width:80%;height:80%;margin-bottom:10px;">
+    <h1 class="text-center" style="font-weight:bold;color:rgb(0,0,0);">Add Class Room</h1>
+    <div style="margin-top:34px;"></div>
+    <div class="form-group"><input class="form-control" type="number" name="classrom_id" required=""
+                                   placeholder="Unique Classroom ID" min="0" max="100000"></div>
+    <div class="form-group"><input class="form-control" type="number" name="capacity" required="" placeholder="Capacity"
+                                   min="1" max="1000"></div>
+    <button class="btn btn-success" type="submit" id="create_submit"
+            style="background-color:rgb(26,174,60);width:100%;">Create
+    </button>
+</form>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="../../bootstrap_studio/export/assets/js/project_logic.js"></script>
+</body>
+
+</html>

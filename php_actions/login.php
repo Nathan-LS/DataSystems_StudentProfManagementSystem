@@ -34,8 +34,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 $response->setMessage("You entered an incorrect username or password for professor.");
                 echo $response;
             }
-            $sql = null;
+        } else if ($_POST['login_type'] == "Student") {
+            $sql = $con->prepare("SELECT * FROM `student` WHERE cwid = :login_id");
+            $sql->execute(array(login_id => $_POST['login_id']));
+            $row = $sql->fetch();
+            if ($row) {
+                $_SESSION['fname'] = $row['s_fname'];
+                $_SESSION['lname'] = $row['s_lname'];
+                $_SESSION["access_level"] = 1;
+                $response->setError(false);
+                $response->setMessage("Hello $row[1] $row[2]. You are now logged in!");
+                $response->setLink("student.php");
+                echo $response;
+            } else {
+                $response->setError(true);
+                $response->setMessage("You entered an incorrect username or password for student.");
+                echo $response;
+            }
+        } else {
+            $response->setError(true);
+            $response->setMessage("You can only login to type of student or professor.");
+            echo $response;
         }
+        $sql = null;
     }
     catch (PDOException $ex){
         $response->setError(true);
