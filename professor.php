@@ -30,12 +30,21 @@ $permissions->can_access();
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade show active" id="tab-1">
-                        <div class="list-group" style="font-size:20px;height:100%;"><button class="list-group-item list-group-item-action"><span>Department</span></button><button class="list-group-item list-group-item-action"><span>Course</span></button><button class="list-group-item list-group-item-action"><span>Section</span></button>
+                        <div class="list-group" style="font-size:20px;height:100%;">
+                            <button class="list-group-item list-group-item-action"
+                                    href="additional/forms/create_department.php #s_form"><span>Department</span>
+                            </button>
+
+                            <button class="list-group-item list-group-item-action"><span>Course</span></button>
+                            <button class="list-group-item list-group-item-action"><span>Section</span></button>
                             <button class="list-group-item list-group-item-action"
                                     href="additional/forms/create_classroom.html #s_form"><span>Class Room</span>
                             </button>
                             <button class="list-group-item list-group-item-action"
                                     href="additional/forms/create_professor.html #s_form"><span>Professor</span>
+                            </button>
+                            <button class="list-group-item list-group-item-action"
+                                    href="additional/forms/add_profDegree.php #s_form"><span>Professor Degree</span>
                             </button>
                             <button class="list-group-item list-group-item-action"
                                     href="additional/forms/create_student.html #s_form"><span>Student</span></button>
