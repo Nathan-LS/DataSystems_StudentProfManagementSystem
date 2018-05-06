@@ -3,7 +3,7 @@ var popnotify = function(resp){
         $('#m_error_text').text("Something went wrong");
         $('#m_error_close').attr("href","#");
         $('#m_error').modal();
-        return;
+
     }
     else if (resp.error == 0){
         $('#m_ok_text').text(resp.message);
@@ -20,7 +20,7 @@ var popnotify = function(resp){
         $('#m_error_close').attr("href","#");
         $('#m_error').modal();
     }
-}
+};
 
 jQuery("#load_form,#login_cont").on("click","#create_submit, #login_button",function(event){
     event.preventDefault();
@@ -50,7 +50,7 @@ jQuery("button.list-group-item").click(function () {
 });
 
 jQuery("#login_form").on("click","#register_button",function(event){
-    $("#login_cont").load("additional/forms/create_student.html #s_form");
+    $("#login_cont").load("additional/forms/create_student.php #s_form");
     jQuery('#login_cont').hide().fadeIn(1000);
 });
 

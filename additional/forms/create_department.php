@@ -4,13 +4,13 @@
       style="margin:0px;padding-top:28px;padding-bottom:28px;width:80%;height:80%;margin-bottom:10px;">
     <h1 class="text-center" style="font-weight:bold;color:rgb(0,0,0);">Add Department</h1>
     <div style="margin-top:34px;"></div>
-    <div class="form-group"><input class="form-control" type="password" name="d_num" required=""
+    <div class="form-group"><input class="form-control" type="text" name="d_num" required=""
                                    placeholder="Department Number" autofocus=""></div>
-    <div class="form-group"><input class="form-control" type="tel" name="d_name" required=""
+    <div class="form-group"><input class="form-control" type="text" name="d_name" required=""
                                    placeholder="Department Name" autofocus=""></div>
     <div class="form-group"><input class="form-control" type="tel" name="d_phone" required="" placeholder="Phone Number"
                                    autofocus=""></div>
-    <div class="form-group"><input class="form-control" type="tel" name="d_location" required="" placeholder="Location"
+    <div class="form-group"><input class="form-control" type="text" name="d_location" required="" placeholder="Location"
                                    autofocus=""></div>
     <div class="form-group">
         <div class="form-row">

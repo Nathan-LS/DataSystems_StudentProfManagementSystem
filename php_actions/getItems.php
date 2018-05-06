@@ -19,8 +19,38 @@ function getProfessors()
         $sql = null;
         return $result;
     } catch (PDOException $ex) {
-        return null;
+        return array();
     }
 }
 
-getProfessors();
+function getDepartments()
+{
+    try {
+        global $host, $port, $dbname, $username, $password;
+        $con = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = $con->prepare("SELECT * FROM department;");
+        $sql->execute($_POST);
+        $result = $sql->fetchAll();
+        $sql = null;
+        return $result;
+    } catch (PDOException $ex) {
+        return array();
+    }
+}
+
+function getCourses()
+{
+    try {
+        global $host, $port, $dbname, $username, $password;
+        $con = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = $con->prepare("SELECT * FROM course;");
+        $sql->execute($_POST);
+        $result = $sql->fetchAll();
+        $sql = null;
+        return $result;
+    } catch (PDOException $ex) {
+        return array();
+    }
+}
