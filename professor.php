@@ -40,7 +40,9 @@ $permissions->can_access();
                             <button class="list-group-item list-group-item-action"
                                     href="additional/forms/add_coursePreq.php #s_form"><span>Course Prerequisite</span>
                             </button>
-                            <button class="list-group-item list-group-item-action"><span>Section</span></button>
+                            <button class="list-group-item list-group-item-action"
+                                    href="additional/forms/create_section.php #s_form"><span>Section</span>
+                            </button>
                             <button class="list-group-item list-group-item-action"
                                     href="additional/forms/create_classroom.html #s_form"><span>Classroom</span>
                             </button>
@@ -52,6 +54,9 @@ $permissions->can_access();
                             </button>
                             <button class="list-group-item list-group-item-action"
                                     href="additional/forms/create_student.php #s_form"><span>Student</span></button>
+                            <button class="list-group-item list-group-item-action"
+                                    href="additional/forms/add_studentMinor.php #s_form"><span>Student Minor</span>
+                            </button>
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab-2">
