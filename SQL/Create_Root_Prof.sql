@@ -12,6 +12,6 @@
 -- Dumping data for table `professors` creates our first root professor with an ID of 0. Use login ID 0 to login. You should delete this professor after creating more
 --
 
-INSERT INTO `professors` (`p_ssn`, `p_fname`, `p_lname`, `p_phone`, `p_sex`, `p_title`, `p_salary`) VALUES
-(0, 'Root', 'Professor', '0', 'male', 'Full_Professor', 0000000000);
+INSERT INTO `professors` (`p_ssn`, `p_name`, `p_phone`, `p_sex`, `p_title`, `p_salary`) VALUES
+  (0, 'Root Professor', '0', 'male', 'Full_Professor', 0000000000);
 

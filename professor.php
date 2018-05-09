@@ -60,7 +60,12 @@ $permissions->can_access();
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab-2">
-                        <div class="list-group" style="font-size:22px;"><button class="list-group-item list-group-item-action"><span>My Classes</span></button><button class="list-group-item list-group-item-action"><span>My Class Grades</span></button></div>
+                        <div class="list-group" style="font-size:22px;">
+                            <button class="list-group-item list-group-item-action"
+                                    href="additional/views/view_profSections.html #s_form"><span>My classes</span>
+                            </button>
+                            <button class="list-group-item list-group-item-action"><span>My Class Grades</span></button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -28,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach ($_POST as $key => $value) {
             $_POST[$key] = parse_input($value, true);
         }
-        $sql = $con->prepare("INSERT INTO `student` (`cwid`,`s_fname`,`s_lname`,`s_phone`,`s_address`,`s_city`,`s_state`,`s_zip`,`s_major`) 
-            VALUES (:cwid,:s_fname,:s_lname,:s_phone,:s_address,:s_city,:s_state,:s_zip,:s_major)");
+        $sql = $con->prepare("INSERT INTO `student` (`cwid`,`s_fname`,`s_lname`,`s_areaCode`,`s_phone`,`s_address`,`s_city`,`s_state`,`s_zip`,`s_major`) 
+            VALUES (:cwid,:s_fname,:s_lname,:s_areaCode,:s_phone,:s_address,:s_city,:s_state,:s_zip,:s_major)");
         $sql->execute($_POST);
         $sql = null;
         $response->setError(false);

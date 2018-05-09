@@ -21,11 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $sql->execute(array(login_id=>$_POST['login_id']));
             $row = $sql->fetch();
             if ($row){
-                $_SESSION['fname'] = $row['p_fname'];
-                $_SESSION['lname'] = $row['p_lname'];
+                $_SESSION['fname'] = $row['p_name'];
+                $_SESSION['lname'] = "";
                 $_SESSION["access_level"] = 2;
                 $response->setError(false);
-                $response->setMessage("Hello $row[1] $row[2]. You are now logged in!");
+                $response->setMessage("Hello $row[1]. You are now logged in!");
                 $response->setLink("professor.php");
                 echo $response;
             }

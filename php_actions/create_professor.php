@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         foreach($_POST as $key => $value){
             $_POST[$key] = parse_input($value,true);
         }
-        $sql = $con->prepare("INSERT INTO `professors` (`p_ssn`, `p_fname`, `p_lname`, `p_phone`, `p_sex`, `p_title`, `p_salary`) VALUES (:p_ssn, :p_fname, :p_lname, :p_phone, :p_sex, :p_title, :p_salary)");
+        $sql = $con->prepare("INSERT INTO `professors` (`p_ssn`, `p_name`,`p_address`, `p_phone`, `p_sex`, `p_title`, `p_salary`) VALUES (:p_ssn, :p_name,:p_address, :p_phone, :p_sex, :p_title, :p_salary)");
         $sql->execute($_POST);
         $sql = null;
 

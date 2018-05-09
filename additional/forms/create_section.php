@@ -47,7 +47,7 @@
                     require_once(dirname(__FILE__) . "/../../php_actions/getItems.php");
                     foreach (getProfessors() as $result) {
                         $id = $result['p_ssn'];
-                        $name = $result['p_fname'] . " " . $result["p_lname"];
+                        $name = $result['p_name'];
                         echo "<option value=\"$id\">$name</option>";
                     }
                     ?>

@@ -15,8 +15,13 @@
                                     autofocus=""></div>
         </div>
     </div>
-    <div class="form-group"><input class="form-control" type="tel" name="s_phone" required=""
-                                   placeholder="Telephone Number" autofocus=""></div>
+    <div class="form-group">
+        <div class="form-row">
+            <div class="col"><input class="form-control" type="number" name="s_areaCode" placeholder="Area Code"></div>
+            <div class="col"><input class="form-control" type="tel" name="s_phone" required=""
+                                    placeholder="Telephone Number" autofocus=""></div>
+        </div>
+    </div>
     <div class="form-group">
         <div class="form-row">
             <div class="col"><input class="form-control" type="text" name="s_address" placeholder="Address"></div>
@@ -45,3 +50,4 @@
     </button>
 </form>
 </body>
+
