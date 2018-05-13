@@ -22,12 +22,30 @@ var popnotify = function(resp){
     }
 };
 
+var afterLoads = function () {
+    jQuery("#selection_Grades").change(function () {
+        $("#load_GradeTable").load("additional/views/table_Grades.php #GradeTable", {enrolled_section: $("#selection_Grades").val()});
+    });
+    jQuery("#enrolled_section").change(function () {
+        $("#load_grade_student").load("additional/forms/set_grade_inputs.php #enrolled_student_select", {enrolled_section: $("#enrolled_section").val()}, function () {
+            jQuery("#enrolled_student").change(function () {
+                $("#load_grade_student_currentgrade").load("additional/forms/set_grade_inputs2.php #enrolled_student_grade", {
+                    enrolled_section: $("#enrolled_section").val(),
+                    student_id: $("#enrolled_student").val()
+                });
+            });
+        });
+    });
+    jQuery("#selection_Course").change(function () {
+        $("#load_AVsections").load("additional/views/table_AVsections.php #AVsections", {c_id: $("#selection_Course").val()});
+    });
+};
+
 jQuery("#load_form,#login_cont").on("click","#create_submit, #login_button",function(event){
     event.preventDefault();
     var to_submit = $("#s_form, #login_form").serialize();
     var formLink = $("#s_form, #login_form").attr('action');
     jQuery('#load_form, #login_cont').find('input, select, button').prop('disabled', true);
-
     $.post(formLink,to_submit)
         .done(function(data){
             popnotify(JSON.parse(data));
@@ -46,6 +64,7 @@ jQuery("button.list-group-item").click(function () {
     jQuery(this).addClass('disabled').siblings().removeClass('disabled');
     $('#load_form').load(formLink,'', function(){
         jQuery('#load_form').hide().fadeIn(1000);
+        afterLoads();
     });
 });
 
@@ -58,3 +77,4 @@ jQuery("#m_error, #m_ok").on("click", "#m_error_close, #m_ok_close",function(){
     var link = jQuery(this).attr('href');
     window.location.href = link;
 });
+

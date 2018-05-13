@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION['fname'] = $row['p_name'];
                 $_SESSION['lname'] = "";
                 $_SESSION["access_level"] = 2;
+                $_SESSION['id'] = $row['p_ssn'];
                 $response->setError(false);
                 $response->setMessage("Hello $row[1]. You are now logged in!");
                 $response->setLink("professor.php");
@@ -42,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION['fname'] = $row['s_fname'];
                 $_SESSION['lname'] = $row['s_lname'];
                 $_SESSION["access_level"] = 1;
+                $_SESSION['id'] = $row['cwid'];
                 $response->setError(false);
                 $response->setMessage("Hello $row[1] $row[2]. You are now logged in!");
                 $response->setLink("student.php");

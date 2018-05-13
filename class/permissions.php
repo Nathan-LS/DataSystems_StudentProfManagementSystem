@@ -26,6 +26,50 @@ class permissions
         }
     }
 
+    public function permission_level()
+    {
+        if (isset($_SESSION['access_level'])) {
+            return $_SESSION['access_level'];
+        } else {
+            return null;
+        }
+    }
+
+    public function isStudent()
+    {
+        if (isset($_SESSION['access_level'])) {
+            if ($_SESSION['access_level'] == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return null;
+        }
+    }
+
+    public function isProfessor()
+    {
+        if (isset($_SESSION['access_level'])) {
+            if ($_SESSION['access_level'] == 2) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return null;
+        }
+    }
+
+    public function getID()
+    {
+        if (isset($_SESSION['id'])) {
+            return $_SESSION['id'];
+        } else {
+            return null;
+        }
+    }
+
     private function logged_in(){
         if (!isset($_SESSION['access_level'])){
             $this->resp->setError(true);

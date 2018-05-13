@@ -19,7 +19,9 @@ $permissions->can_access();
 <body style="background-color:rgb(88,88,88);width:100%;height:100%;">
     <?php include "additional/navbar.php" ?>
     <div class="d-inline-block" style="width:80%;height:91%;background-color:#171616;min-height:auto;max-height:auto;min-width:auto;max-width:auto;">
-        <div class="container d-flex justify-content-center align-items-center align-content-center align-self-center" id="load_form" style="margin-top:10%;margin-bottom:0px;background-color:#e7e7e7;"></div>
+        <div class="container d-flex justify-content-center align-items-center align-content-center align-self-center"
+             id="load_form"
+             style="margin-top:5%;margin-bottom:0px;background-color:#e7e7e7;max-width:80%;margin-left:200px;margin-right:200px;"></div>
     </div>
     <div class="d-block float-left" style="background-color:#d7d7d7;width:20%;height:91vh;min-height:auto;max-height:auto;">
         <div class="container-fluid" style="width:100%;max-width:100%;min-width:100%;padding-right:0;padding-left:0;height:100%;min-height:100%;max-height:100%;">
@@ -57,14 +59,22 @@ $permissions->can_access();
                             <button class="list-group-item list-group-item-action"
                                     href="additional/forms/add_studentMinor.php #s_form"><span>Student Minor</span>
                             </button>
+                            <button class="list-group-item list-group-item-action"
+                                    href="additional/forms/add_enroll.php #s_form"><span>Enroll a student</span>
+                            </button>
+                            <button class="list-group-item list-group-item-action"
+                                    href="additional/forms/set_grade.php #s_form"><span>Set Grades</span>
+                            </button>
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab-2">
                         <div class="list-group" style="font-size:22px;">
                             <button class="list-group-item list-group-item-action"
-                                    href="additional/views/view_profSections.html #s_form"><span>My classes</span>
+                                    href="additional/views/view_profSections.php #s_form"><span>My classes</span>
                             </button>
-                            <button class="list-group-item list-group-item-action"><span>My Class Grades</span></button>
+                            <button class="list-group-item list-group-item-action"
+                                    href="additional/views/view_profGrades.php #s_form"><span>My Class Grades</span>
+                            </button>
                         </div>
                     </div>
                 </div>

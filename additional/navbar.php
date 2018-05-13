@@ -11,6 +11,13 @@ session_start();
                 <li role="presentation" class="nav-item"><a href="professor.php" class="nav-link">Professors<i class="fa fa-pencil" style="margin-left:5px;"></i></a></li>
 
             </ul>
+            <noscript>
+                <font color="red">
+                    For full functionality of this site it is necessary to enable JavaScript.
+                    Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+                        instructions how to enable JavaScript in your web browser</a>.
+                </font>
+            </noscript>
             <?php
             if (empty($_SESSION['access_level'])){
             echo '<a class="btn btn-primary ml-auto" role="button" href="login.php">login<i class="fa fa-key" style="margin-left:7px;"></i></a></div>';
