@@ -12,9 +12,10 @@
                     <?php
                     require_once(dirname(__FILE__) . "/../../php_actions/getItems.php");
                     foreach (getSections(true) as $result) {
-                        $id = $result['section_num'];
+                        $s_id = $result['section_num'];
+                        $c_id = $result['course_fkey'];
                         $name = "Course: " . $result['c_title'] . " Section #: " . $result['section_num'] . " Professor: " . $result['p_name'];
-                        echo "<option value=\"$id\">$name</option>";
+                        echo "<option value=\"$c_id,$s_id\">$name</option>";
                     }
                     ?>
                 </select></div>

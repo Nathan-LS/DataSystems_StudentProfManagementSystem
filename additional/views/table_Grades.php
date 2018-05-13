@@ -11,7 +11,11 @@
         <tbody>
         <?php
         require_once(dirname(__FILE__) . "/../../php_actions/getViews.php");
-        $gradesAr = getGradeCount($_POST['enrolled_section']);
+        require_once(dirname(__FILE__) . "/../../php_actions/input_checks.php");
+        $vals = parse_keys($_POST['enrolled_section']);
+        $c_id = $vals[0];
+        $s_id = $vals[1];
+        $gradesAr = getGradeCount($c_id, $s_id);
         if (empty($gradesAr)) {
             echo "<tr>
                               <td>No students are enrolled in this course yet.</td>

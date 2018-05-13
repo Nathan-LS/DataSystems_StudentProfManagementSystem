@@ -13,5 +13,5 @@
 --
 
 INSERT INTO `professors` (`p_ssn`, `p_name`, `p_phone`, `p_sex`, `p_title`, `p_salary`) VALUES
-  (0, 'Root Professor', '0', 'male', 'Full_Professor', 0000000000);
+  (1, 'Root Professor', '000', 'male', 'Full_Professor', 000000000);
 

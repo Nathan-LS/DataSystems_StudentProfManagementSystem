@@ -11,7 +11,7 @@
             require_once(dirname(__FILE__) . "/../../php_actions/getItems.php");
             require_once(dirname(__FILE__) . "/../../class/permissions.php");
             $permissions = new permissions(2);
-            if ($permissions->isStudent()) { //if student can only enroll for theirself
+            if ($permissions->isStudent()) { //if student can only enroll for self
                 echo '<select name="enrolled_student" required class="form-control"><optgroup label="Student"></optgroup>';
                 foreach (getStudents() as $result) {
                     $id = $result['cwid'];
@@ -40,9 +40,10 @@
                     <?php
                     require_once(dirname(__FILE__) . "/../../php_actions/getItems.php");
                     foreach (getSections() as $result) {
-                        $id = $result['section_num'];
-                        $name = "Course= " . $result['c_title'] . " Section #= " . $result['section_num'] . " Professor= " . $result['p_name'];
-                        echo "<option value=\"$id\" selected>$name</option>";
+                        $s_id = $result['section_num'];
+                        $c_id = $result['course_fkey'];
+                        $name = "Course: " . $result['c_title'] . " Section #: " . $result['section_num'] . " Professor: " . $result['p_name'];
+                        echo "<option value=\"$c_id,$s_id\" selected>$name</option>";
                     }
                     ?>
                 </select></div>

@@ -125,13 +125,14 @@ function getStudents()
     }
 }
 
-function getStudentsInSection($sec_id)
+function getStudentsInSection($course_id, $sec_id)
 {
     try {
         global $host, $port, $dbname, $username, $password;
         $con = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = $con->prepare("SELECT s.* FROM enrollment inner join student s on enrollment.enrolled_student = s.cwid WHERE enrolled_section=:sec_id;");
+        $sql = $con->prepare("SELECT s.* FROM enrollment inner join student s on enrollment.enrolled_student = s.cwid WHERE enrolled_course=:course_id and enrolled_section=:sec_id;");
+        $sql->bindValue(':course_id', $course_id);
         $sql->bindValue(':sec_id', $sec_id);
         $sql->execute();
         $result = $sql->fetchAll();
@@ -142,13 +143,14 @@ function getStudentsInSection($sec_id)
     }
 }
 
-function getStudentGrade($section_id, $student_id)
+function getStudentGrade($course_id, $section_id, $student_id)
 {
     try {
         global $host, $port, $dbname, $username, $password;
         $con = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = $con->prepare("SELECT grade from enrollment where enrolled_section=:sec_id and enrolled_student = :st_id");
+        $sql = $con->prepare("SELECT grade from enrollment where enrolled_course=:c_id and enrolled_section=:sec_id and enrolled_student = :st_id");
+        $sql->bindValue(':c_id', $course_id);
         $sql->bindValue(':sec_id', $section_id);
         $sql->bindValue(':st_id', $student_id);
         $sql->execute();

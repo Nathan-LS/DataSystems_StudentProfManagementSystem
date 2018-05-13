@@ -2,24 +2,12 @@
 require_once(dirname(__FILE__) . "/../config.php");
 require_once(dirname(__FILE__) . "/../class/response.php");
 require_once(dirname(__FILE__) . "/../class/permissions.php");
+require_once(dirname(__FILE__) . "/input_checks.php");
 
 $response = new response();
 $permissions = new permissions(2);
 $permissions->can_access();
 
-function parse_input($data, $required)
-{
-    $data = trim($data);
-    $data = htmlspecialchars($data);
-    if ($required && empty($data)) {
-        global $response;
-        $response->setError(true);
-        $response->setMessage("You are missing input for a required field");
-        echo $response;
-        die();
-    }
-    return $data;
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
@@ -36,7 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql->execute();
         foreach ($_POST as $key => $val) {
             if ($val == "on") {
-                $sql = $con->prepare("INSERT INTO `class_meetings` (`meeting_section`,`day`,`start_time`,`end_time`) VALUE(:section_num,:dayW,:start_time,:end_time)");
+                $sql = $con->prepare("INSERT INTO `class_meetings` (`meeting_course`,`meeting_section`,`day`,`start_time`,`end_time`) VALUE(:course_fkey,:section_num,:dayW,:start_time,:end_time)");
+                $sql->bindValue(':course_fkey', $_POST['course_fkey']);
                 $sql->bindValue(':section_num', $_POST['section_num']);
                 $sql->bindValue(':dayW', $key);
                 $sql->bindValue(':start_time', $_POST['start_time']);

@@ -2,6 +2,7 @@
 require_once(dirname(__FILE__) . "/../config.php");
 require_once(dirname(__FILE__) . "/../class/response.php");
 require_once(dirname(__FILE__) . "/../class/permissions.php");
+require_once(dirname(__FILE__) . "/input_checks.php");
 
 $response = new response();
 $permissions = new permissions(2);

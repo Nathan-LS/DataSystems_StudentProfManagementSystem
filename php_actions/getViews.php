@@ -21,13 +21,13 @@ function getProfessorClasses()
   ) teaching inner join
   (
     SELECT
-      meeting_section,
+      meeting_course,meeting_section,
       GROUP_CONCAT(substr(day, 1, 2) SEPARATOR '') as m_days,
       start_time,
       end_time
     from class_meetings
-    group by meeting_section
-  )meetings on teaching.section_num=meetings.meeting_section;");
+    group by meeting_course,meeting_section
+  )meetings on teaching.section_num=meetings.meeting_section and (teaching.course_fkey=meetings.meeting_course);");
         $sql->bindValue('prof_id', $permissions->getID());
         $sql->execute();
         $result = $sql->fetchAll();
@@ -46,7 +46,7 @@ function getAVsections($c_id)
         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = $con->prepare("SELECT c_title,section_num,classroom,total_enrolled,capacity,m_days,start_time,end_time from
   (
-    SELECT *,(SELECT count(*) FROM enrollment WHERE enrolled_section=section_num) as total_enrolled
+    SELECT *,(SELECT count(*) FROM enrollment WHERE enrolled_course=course_fkey and enrolled_section=section_num) as total_enrolled
     FROM course_sections
       inner join course c on course_sections.course_fkey = c.c_id
       inner join department d on c.c_dept = d.d_num
@@ -55,13 +55,13 @@ function getAVsections($c_id)
   ) c_s inner join
   (
     SELECT
-      meeting_section,
+      meeting_course,meeting_section,
       GROUP_CONCAT(substr(day, 1, 2) SEPARATOR '') as m_days,
       start_time,
       end_time
     from class_meetings
-    group by meeting_section
-  )meetings on c_s.section_num=meetings.meeting_section;");
+    group by meeting_course,meeting_section
+  )meetings on c_s.section_num=meetings.meeting_section and (c_s.course_fkey=meetings.meeting_course);");
         $sql->bindValue(':c_id', $c_id);
         $sql->execute();
         $result = $sql->fetchAll();
@@ -72,13 +72,14 @@ function getAVsections($c_id)
     }
 }
 
-function getGradeCount($section_id)
+function getGradeCount($course_id, $section_id)
 {
     try {
         global $host, $port, $dbname, $username, $password;
         $con = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = $con->prepare("SELECT grade,count(*) as total from enrollment WHERE enrolled_section = :section_id group by grade;");
+        $sql = $con->prepare("SELECT grade,count(*) as total from enrollment WHERE enrolled_course=:c_id and enrolled_section = :section_id group by grade;");
+        $sql->bindValue(':c_id', $course_id);
         $sql->bindValue(':section_id', $section_id);
         $sql->execute();
         $result = $sql->fetchAll();
@@ -98,7 +99,7 @@ function getStudentGrades()
         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = $con->prepare("SELECT concat(c_title,' (',enrolled_section,')') as course, grade FROM
 enrollment
-  inner join course_sections cs on enrollment.enrolled_section = cs.section_num
+  inner join course_sections cs on enrollment.enrolled_section = cs.section_num and (enrollment.enrolled_course = cs.course_fkey)
   inner join course c on cs.course_fkey = c.c_id
 WHERE enrolled_student = :student_id;
 

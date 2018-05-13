@@ -16,9 +16,10 @@
                             <?php
                             require_once(dirname(__FILE__) . "/../../php_actions/getItems.php");
                             foreach (getSections() as $result) {
-                                $id = $result['section_num'];
+                                $id_c = $result['c_id'];
+                                $id_s = $result['section_num'];
                                 $name = "Course:" . $result['c_title'] . " Course ID:" . $result['c_id'] . " Section ID:" . $result['section_num'];
-                                echo "<option value=\"$id\">$name</option>";
+                                echo "<option value=\"$id_c,$id_s\">$name</option>";
                             }
                             ?>
                         </select></div>
