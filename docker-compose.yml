@@ -1,19 +1,19 @@
 version: '3'
 services:
   web:
-    build: .
-    restart: always
+    image: nathanls/332filestructuresdatasystems
     ports:
       - 80:80
     volumes:
       - sqlInit:/var/www/html/SQL
   dbHost:
-    image: mariadb:5-trusty
-    restart: always
+    image: mariadb:10.2
     environment:
       MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: db
     volumes:
       - sqlInit:/docker-entrypoint-initdb.d
+    depends_on:
+      - web
 volumes:
-  sqlInit
+  sqlInit:
