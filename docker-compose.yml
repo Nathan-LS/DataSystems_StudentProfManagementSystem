@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    build: .
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - sqlInit:/var/www/html/SQL
+  dbHost:
+    image: mariadb:5-trusty
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: db
+    volumes:
+      - sqlInit:/docker-entrypoint-initdb.d
+volumes:
+  sqlInit
